@@ -30,17 +30,17 @@ interface Options {
 }
 
 const networks: { [pluginId: string]: Options } = {
-  zcash: {
-    serviceProtoPath: path.join(__dirname, '/protos/zcash/service.proto'),
+  hush: {
+    serviceProtoPath: path.join(__dirname, '/protos/zcash/service.proto'), // Same proto format
     checkpointsPath: path.join(
       __dirname,
-      '../android/src/main/assets/co.electriccoin.zcash/checkpoint/mainnet/'
+      '../android/src/main/assets/hush/checkpoint/mainnet/'
     ),
-    serverUrl: 'zec.rocks:443',
-    packagePath: 'cash.z.wallet.sdk.rpc',
-    lastSdkCheckpointHeight: 1300000,
-    blockTimeSeconds: 75,
-    ssl: true
+    serverUrl: 'localhost:9067', // Local HUSH lightwalletd
+    packagePath: 'cash.z.wallet.sdk.rpc', // Same proto package
+    lastSdkCheckpointHeight: 0, // HUSH is Pure Sapling from genesis
+    blockTimeSeconds: 75, // Same as Zcash
+    ssl: false // Local server, no TLS
   }
 }
 
